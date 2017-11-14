@@ -33,7 +33,7 @@ Depending on the target Operating System, run gcc as follows:
 - Linux  
   `$ gcc -O -Wall -Wextra -m32 -static dec0de.c -o dec0de`
 - Mac OS X  
-  `$ gcc -O -Wall -Wextra -mmacosx-version-min=10.5 dec0de.c -o dec0de`
+  `$ gcc -O -Wall -Wextra -m32 -mmacosx-version-min=10.5 dec0de.c -o dec0de`
 - Windows  
   `$ gcc -O -Wall -Wextra -std=c99 dec0de.c -o dec0de.exe`
 - Atari ST  
