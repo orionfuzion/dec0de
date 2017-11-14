@@ -15,6 +15,9 @@ Supported protections are:
 
 The *prebuilt/* directory provides prebuilt binaries for Linux, Mac OS X, Windows and Atari ST.
 
+The *samples/* directory provides protected programs samples.
+See the *samples/README.txt* file for detailed information.
+
 The *src/* directory provides the *dec0de.c* source file.
 
 The source file can be compiled on any Operating System supporting gcc.

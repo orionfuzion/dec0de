@@ -1,13 +1,18 @@
-This directory provides protected programs samples:
----------------------------------------------------
+This directory provides protected programs samples.
+
+For protection systems that rely on physically protected floppy disks
+(e.g. Rob Northen Copylock), images of original protected floppy disks
+can be found at http://www.atarimania.com or at http://www.atarilegend.com.
+These image files can be used on most Atari ST emulators.
+
+File Name               Protection Information
+---------               ----------------------
 
 AB100.PRG               Illegal Anti-bitos v1.0
 
-AB140A.PRG              Illegal Anti-bitos v1.4
-                        Variant a
+AB140A.PRG              Illegal Anti-bitos v1.4 (variant a)
 
-AB140B.PRG              Illegal Anti-bitos v1.4
-                        variant b
+AB140B.PRG              Illegal Anti-bitos v1.4 (variant b)
 
 AB160.PRG               Illegal Anti-bitos v1.6
 
@@ -16,12 +21,12 @@ AB161.PRG               Illegal Anti-bitos v1.61
 CID10.PRG               CID Encrypter v1.0bp
 
 COOP5ERR.PRG            Cameo Cooper v0.5
-                        ! Error during decryption
+                        (expected error during decryption)
 
 COOP5.PRG               Cameo Cooper v0.5
 
 COOP5WAR.PRG            Cameo Cooper v0.5
-                        ! Warning after decryption
+                        (expected warning after decryption)
 
 COOP6.PRG               Cameo Cooper v0.6
 
@@ -39,27 +44,24 @@ SLY2.PRG                Orion Sly Packer v2.0,
 
 TOX100.PRG	        NTM/Cameo Toxic Packer v1.0
 
-ROBN88/3DPOOL.PRG	Rob Northen Copylock Protection System series 1
-                        Variant a
-                        3-D Pool
+ROBN88/3DPOOL.PRG	Rob Northen Copylock Protection System series 1 (var. a)
+                        Game:                   3-D Pool
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
                                                 Saved in memory (addr $24)
 
-ROBN88/ASTAROTH.PRG     Rob Northen Copylock Protection System series 1
-                        Variant a
-                        Astaroth
+ROBN88/ASTAROTH.PRG     Rob Northen Copylock Protection System series 1 (var. a)
+                        Game:                   Astaroth
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
                                                 Saved in memory (addr $24)
 
-ROBN88/BARB2.BIN        Rob Northen Copylock Protection System series 1
-                        Variant a
-                        Barbarian II
+ROBN88/BARB2.BIN        Rob Northen Copylock Protection System series 1 (var. a)
+                        Game:                   Barbarian II
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
@@ -67,19 +69,17 @@ ROBN88/BARB2.BIN        Rob Northen Copylock Protection System series 1
                                                 Saved in memory (addr $24)
                                                 Turned into a magic (addr $7c)
 
-ROBN88/MRHELI.PRG       Rob Northen Copylock Protection System series 1
-                        Variant a
-                        Mr Heli
+ROBN88/MRHELI.PRG       Rob Northen Copylock Protection System series 1 (var. a)
+                        Game:                   Mr Heli
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
                                                 Saved in memory (addr $24)
-                        ! Warning after decryption
+                        (expected warning after decryption)
 
-ROBN88/RICKD.BIN        Rob Northen Copylock Protection System series 1
-                        Variant a
-                        Rick Dangerous
+ROBN88/RICKD.BIN        Rob Northen Copylock Protection System series 1 (var. a)
+                        Game:                   Rick Dangerous
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
@@ -87,207 +87,182 @@ ROBN88/RICKD.BIN        Rob Northen Copylock Protection System series 1
                                                 Saved in memory (addr $24)
                                                 Turned into a magic (addr $60)
 
-ROBN88/OPWOLF.BIN       Rob Northen Copylock Protection System series 1
-                        Variant b
-                        Operation Wolf
+ROBN88/OPWOLF.BIN       Rob Northen Copylock Protection System series 1 (var. b)
+                        Game:                   Operation Wolf
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN88/BOMBUZAL.PRG     Rob Northen Copylock Protection System series 1
-                        Variant c
-                        Bombuzal
+ROBN88/BOMBUZAL.PRG     Rob Northen Copylock Protection System series 1 (var. c)
+                        Game:                   Bombuzal
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN88/RTYPE.PRG        Rob Northen Copylock Protection System series 1
-                        Variant c
-                        R-Type
+ROBN88/RTYPE.PRG        Rob Northen Copylock Protection System series 1 (var. c)
+                        Game:                   R-Type
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN88/VICROAD.BIN      Rob Northen Copylock Protection System series 1
-                        Variant c
-                        Victory Road
+ROBN88/VICROAD.BIN      Rob Northen Copylock Protection System series 1 (var. c)
+                        Game:                   Victory Road
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN88/FSHARK.PRG       Rob Northen Copylock Protection System series 1
-                        Variant d
-                        Flying Shark
+ROBN88/FSHARK.PRG       Rob Northen Copylock Protection System series 1 (var. d)
+                        Game:                   Flying Shark
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN88/CHASEHQ.BIN      Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Chase HQ
+ROBN88/CHASEHQ.BIN      Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Chase HQ
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN88/COSMIC.BIN       Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Cosmic Pirate (disk b)
+ROBN88/COSMIC.BIN       Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Cosmic Pirate (disk b)
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN88/RAMBO3.BIN       Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Rambo III
+ROBN88/RAMBO3.BIN       Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Rambo III
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN88/TOOBIN.BIN       Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Toobin
+ROBN88/TOOBIN.BIN       Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Toobin
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN88/WBOY.BIN         Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Wonderboy in Monsterland
+ROBN88/WBOY.BIN         Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Wonderboy in Monsterland
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN88/XENON2.BIN       Rob Northen Copylock Protection System series 1
-                        Variant e
-                        Xenon II
+ROBN88/XENON2.BIN       Rob Northen Copylock Protection System series 1 (var. e)
+                        Game:                   Xenon II
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
                                                 Saved in memory (addr $24)
 
-ROBN89/5THGEAR.BIN      Rob Northen Copylock Protection System series 2
-                        Variant a
-                        5th Gear
+ROBN89/5THGEAR.BIN      Rob Northen Copylock Protection System series 2 (var. a)
+                        Game:                   5th Gear
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN89/AIRBORNE.PRG     Rob Northen Copylock Protection System series 2
-                        Variant a
-                        Airborne Ranger
+ROBN89/AIRBORNE.PRG     Rob Northen Copylock Protection System series 2 (var. a)
+                        Game:                   Airborne Ranger
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN89/CYBERB.BIN       Rob Northen Copylock Protection System series 2
-                        Variant a
-                        Cyberball
+ROBN89/CYBERB.BIN       Rob Northen Copylock Protection System series 2 (var. a)
+                        Game:                   Cyberball
                         Type:                   Internal
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
 
-ROBN89/GREM2.BIN        Rob Northen Copylock Protection System series 2
-                        Variant a
-                        Gremlins 2
+ROBN89/GREM2.BIN        Rob Northen Copylock Protection System series 2 (var. a)
+                        Game:                   Gremlins 2
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: No
                         Key disk usage:         No
                         Serial usage:           None
 
-ROBN89/RAINBISL.BIN     Rob Northen Copylock Protection System series 2
-                        Variant a
-                        Rainbow Islands
+ROBN89/RAINBISL.BIN     Rob Northen Copylock Protection System series 2 (var. a)
+                        Game:                   Rainbow Islands
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
 
-ROBN89/BIGNOSE.BIN      Rob Northen Copylock Protection System series 2
-                        Variant b
-                        Big Nose
+ROBN89/BIGNOSE.BIN      Rob Northen Copylock Protection System series 2 (var. b)
+                        Game:                   Big Nose
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN89/PANG.BIN         Rob Northen Copylock Protection System series 2
-                        Variant b
-                        Pang
+ROBN89/PANG.BIN         Rob Northen Copylock Protection System series 2 (var. b)
+                        Game:                   Pang
                         Type:                   Wrapper (binary)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
  
-ROBN89/SAVAGE.PRG       Rob Northen Copylock Protection System series 2
-                        Variant b
-                        Savage
+ROBN89/SAVAGE.PRG       Rob Northen Copylock Protection System series 2 (var. b)
+                        Game:                   Savage
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN89/SWORDROS.PRG     Rob Northen Copylock Protection System series 2
-                        Variant b
-                        Sword of the Rose
+ROBN89/SWORDROS.PRG     Rob Northen Copylock Protection System series 2 (var. b)
+                        Game:                   Sword of the Rose
                         Type:                   Wrapper (GEMDOS)
                         Vectors anti-hijacking: Yes
                         Key disk usage:         Yes
                         Serial usage:           Program dec0ding
 
-ROBN89/SLYSPY.PRG       Rob Northen Copylock Protection System series 2
-                        Variant c
-                        Sly Spy Secret Agent
+ROBN89/SLYSPY.PRG       Rob Northen Copylock Protection System series 2 (var. c)
+                        Game:                   Sly Spy Secret Agent
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
 
-ROBN89/PROPHECY.BIN     Rob Northen Copylock Protection System series 2
-                        Variant e
-                        Prophecy I - The Viking Child
+ROBN89/PROPHECY.BIN     Rob Northen Copylock Protection System series 2 (var. e)
+                        Game:                   Prophecy I - The Viking Child
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
 
-ROBN89/TMACHINE.BIN     Rob Northen Copylock Protection System series 2
-                        Variant e
-                        Time Machine
+ROBN89/TMACHINE.BIN     Rob Northen Copylock Protection System series 2 (var. e)
+                        Game:                   Time Machine
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           Returned to the caller
 
-ROBN89/RTYPEII.BIN      Rob Northen Copylock Protection System series 2
-                        Variant e
-                        R-Type II
+ROBN89/RTYPEII.BIN      Rob Northen Copylock Protection System series 2 (var. e)
+                        Game:                   R-Type II
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes
                         Serial usage:           External memory dec0ding
 
-ROBN89/WARLOCK.BIN      Rob Northen Copylock Protection System series 2
-                        Variant e
-                        Warlock the Avenger
+ROBN89/WARLOCK.BIN      Rob Northen Copylock Protection System series 2 (var. e)
+                        Game:                   Warlock the Avenger
                         Type:                   Internal
                         Vectors anti-hijacking: No
                         Key disk usage:         Yes

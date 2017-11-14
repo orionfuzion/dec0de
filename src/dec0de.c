@@ -1,10 +1,10 @@
 /*****************************************************************************
  *
- * $DEC0DE v1.1, Sep 2017.
+ * $DEC0DE v1.1, Nov 2017.
  *
  * Remove encryption systems used to protect Atari ST programs.
  *
- * This source file can be compiled on any Operating System supporting gcc.
+ * This source file can be compiled on any Operating Systems supporting gcc.
  * For non-Linux systems, the following gcc ports are available:
  * - gcc for Mac OS X   https://github.com/kennethreitz/osx-gcc-installer
  * - gcc for Windows    http://www.mingw.org
@@ -14,7 +14,7 @@
  * - For Linux:
  *   $ gcc -O -Wall -Wextra -m32 -static dec0de.c -o dec0de
  * - For Mac OS X:
- *   $ gcc -O -Wall -Wextra -mmacosx-version-min=10.5 dec0de.c -o dec0de
+ *   $ gcc -O -Wall -Wextra -m32 -mmacosx-version-min=10.5 dec0de.c -o dec0de
  * - For Windows:
  *   $ gcc -O -Wall -Wextra -std=c99 dec0de.c -o dec0de.exe
  * - For Atari ST:
@@ -41,13 +41,13 @@
  *   Zippy Little Protection v2.05 & v2.06,
  *   Yoda Lock-o-matic v1.3.
  *
- * - v1.1, Sep 2017, adds support for:
+ * - v1.1, Nov 2017, adds support for:
  *   Criminals In Disguise (CID) Encrypter v1.0bp,
  *   Rob Northen Copylock Protection System series 1 (1988) & series 2 (1989).
  *
  * Code & reverse engineering: Orion ^ The Replicants ^ Fuzion
  * Reverse engineering:        Maartau ^ Atari Legend ^ Elite
- * ASCII logo:                 Senser ^ Effect
+ * ASCII logo:                 Senser ^ Effect ^ Vectronix
  *
  * Git repository: https://github.com/orionfuzion/dec0de
  * Contact:        orion.replicants@gmail.com or orion.fuzion@gmail.com
@@ -73,7 +73,7 @@
 
 #define DEC0DE_VERSION		"1.1"
 
-#define DEC0DE_DATE		"Sep 2017"
+#define DEC0DE_DATE		"Nov 2017"
 
 #define DEC0DE_VERSION_FULL						\
     "$" DEC0DE_NAME " v" DEC0DE_VERSION	", " DEC0DE_DATE "."
@@ -2394,10 +2394,10 @@ DECLARE_PROTECTION(prot_cid10,
  *   This TVD routine is used for complex code (with loops), such as the
  *   key disk reading.
  *
- * Both series check if the exception vectors have been modified, to prevent
+ * Both series check if the exception vectors have been modified to prevent
  * the execution under a debugger.
  *
- * Both series read a key disk to compute a serial key, in order to:
+ * Both series read a key disk to compute a serial key in order to:
  * - decrypt the original unprotected program (wrapper type).
  * - return that serial key to the caller of the protected routine
  *   (internal type), so it can be checked on return or later.
@@ -2439,7 +2439,8 @@ DECLARE_PROTECTION(prot_cid10,
  *   the location of the different parts of the protection and its behavior.
  * - It then performs dynamic (run-time) analysis of the protection in order
  *   to get the serial key and, in case of a wrapper type, to decrypt the
- *   protected program and determine the destination where it will be executed.
+ *   protected program and to determine the destination where it will be
+ *   executed.
  *
  * The dynamic analysis can only be performed on an Atari ST (protection code
  * must be partially executed). Therefore, Copylock protections can be removed
@@ -2784,7 +2785,7 @@ static inline uint32_t get_decoded_intr_robn88 (unsigned char* buf)
 }
 
 /*
- * Search a code pattern in a portion of the protection.
+ * Search for a code pattern in a portion of the protection.
  */
 static ssize_t get_pattern_offset_robn88 (unsigned char* buf,
 					  size_t         offset,
@@ -3392,13 +3393,14 @@ static inline uint32_t get_decode_key32_robn89 (unsigned char* buf,
  *
  * The code in question installs a "trampoline" routine which will run
  * in the normal execution mode of the CPU (TVD disabled).
- * In the case of the wrapper type, the "trampoline" routine is responsible
- * to copy the decrypted program to its final destination and to start its
- * execution.
- * In the case of the internal type, it is responsible to return to the caller.
+ * In the case of the wrapper type, the "trampoline" routine is in charge of
+ * copying the decrypted program to its final destination and starting
+ * its execution.
+ * In the case of the internal type, it is in charge of returning to the
+ * caller.
  *
  * In order to find that code, only the pattern which corresponds to the
- * first three instructions of the code is searched for.
+ * first three instructions of the code is searched.
  *
  * As seen above, this pattern is encrypted with the second TVD method.
  * The corresponding decryption scheme works as follows: each instruction
@@ -3584,6 +3586,7 @@ static size_t get_subrout_size_robn90 (unsigned char* buf,
 /*
  * Locate a code pattern in the heart of the protection which is encrypted
  * with the second TVD method.
+ *
  * An array of code patterns is passed to the function.
  * The idea is to be able to locate a particular code logic that may have
  * been implemented differently over time.
@@ -4678,19 +4681,24 @@ static void info (void)
     "- The UPX packer/unpacker   https://upx.github.io/\n"
     );
     LOG_INFO_MORE(
-    "Note about the Rob Northen Copylock System:\n"
+    "Note about the Rob Northen Copylock Systems:\n"
     "\n"
+#if !defined (TARGET_ST)
     "To determine the serial number and to extract the original unprotected\n"
     "program, " DEC0DE_NAME " must be run on a real or emulated Atari ST.\n"
-    "In addition to decrypting the program, " DEC0DE_NAME " also provides\n"
-    "useful details about the Copylock protection: the serial number and\n"
-    "the memory address it is saved to, the use of extra tricks in the\n"
+    "\n"
+#endif
+    "Besides decrypting the program, " DEC0DE_NAME " also provides useful\n"
+    "details about the Copylock protection: the serial number and the\n"
+    "memory address it is saved to, the use of extra tricks in the\n"
     "protection (extra magic value, special serial key usage).\n"
     "Such details may be needed to properly crack the protected software.\n"
     "\n"
+#if !defined (TARGET_ST)
     "When run on Linux, Mac OS or Windows, " DEC0DE_NAME " provides these\n"
     "details as much as possible, while skipping the decryption process.\n"
     "\n"
+#endif
     "In addition to the Copylock 'wrapper' type (self-decrypting program)\n"
     DEC0DE_NAME" also supports the Copylock 'internal' type (self-decrypting\n"
     "routine inside a host program).\n"
@@ -4699,6 +4707,11 @@ static void info (void)
     DEC0DE_NAME " will analyze the encrypted routine and give the details\n"
     "needed to crack the protection (such as the serial number and how\n"
     "it is used).\n"
+    "\n"
+    "Original copy-locked floppy disks are available as image files that can\n"
+    "be used on most Atari ST emulators. Such images can be found at:\n"
+    "- Atari Mania    http://www.atarimania.com\n"
+    "- Atari Legend   http://www.atarilegend.com\n"
     );
     LOG_INFO(
     "Greetings to all Atari ST sceners, past and present.\n"
@@ -4712,7 +4725,7 @@ static void info (void)
     "- Jace ^ ST Knights for his support to The Replicants\n"
     "  http://replicants.free.fr/index.php\n"
     "- Brume ^ Atari Legend for his amazing archiving effort\n"
-    "  http://www.stonish.net/Fuzion-61\n"
+    "  http://www.atarilegend.com & http://www.stonish.net/Fuzion-61\n"
     "- Lotek Style ^ tSCc for his great work on Demozoo\n"
     "  https://demozoo.org\n"
     "\n"
@@ -4739,7 +4752,7 @@ static void credits (void)
     "  Code & reverse engineering ... Orion ^ The Replicants ^ Fuzion\n"
     "  Reverse engineering .......... Maartau ^ Atari Legend ^ Elite\n"
 #if defined (TARGET_ST)
-    "  ASCII logo ................... Senser ^ Effect\n"
+    "  ASCII logo ................... Senser ^ Effect ^ Vectronix\n"
 #endif
     "\n"
     DEC0DE_INFO
@@ -5885,9 +5898,9 @@ static uint32_t registers[16];
  * the global 'registers' array.
  *
  * On return from the protection code, The "resuming trampoline" saves the
- * registers (as set by the ending code of the protection) into the global
- * 'registers' array and restore their initial values, it also restores the
- * vectors and resume the execution of the 'run_prot' function.
+ * registers (as left by the protection code) into the global 'registers'
+ * array and restores their initial values, it also restores the vectors and
+ * resumes the execution of the 'run_prot' function.
  * That function restores the cache and returns to the caller.
  */
 static void run_prot (void* prot_entry, void* trampoline_addr,
@@ -6030,6 +6043,7 @@ static void end_wait_prot (void)
 }
 
 /*****************************************************************************
+ *
  * Copylock Protection System series 1 (1988) by Rob Northen
  * Atari ST specific code
  *
@@ -6045,7 +6059,7 @@ static void end_wait_prot (void)
  * wrapper type (although some information is already available for the
  * internal type, as result of the static analysis).
  *
- * The run-time analysis works as follows: the series 1 use a single and
+ * The run-time analysis works as follows: the series 1 uses a single and
  * static (in place) TVD routine. Dec0de replaces this TVD routine with
  * a new one which behaves in the same way but which performs additional
  * on-the-fly checks.
@@ -6114,8 +6128,8 @@ static uint8_t        flags_robn88[FLAG_NR_ROBN88];
  * (instead of the protection one) which performs on-the-fly checks.
  *
  * The protection code of the series 1 has evolved slightly over time.
- * A particular code logic may have been be implemented in different
- * ways (typically the vectors checking). The following TVD routine takes
+ * A particular code logic may have been implemented in different ways
+ * (typically the vectors checking). The following TVD routine takes
  * all variants of the same code logic into account.
  *
  * In order to replace the TVD routine of the protection with dec0de's
@@ -6191,7 +6205,7 @@ static uint32_t tvd_robn88 (void* illvec_cont, void* tvd_pinstr, int tvd_type,
 	    "movea.l	%%sp@+,%%a0					\n\t"
 	    "rts							\n\t"
 	    "								\n\t"
-	    "3:	;# illegal handler; installs the TVD routine		\n\t"
+	    "3:	;# illegal handler - installs the TVD routine		\n\t"
 	    "movem.l	%%d0/%%a0-%%a1,%%sp@-				\n\t"
 	    "lea	4f(pc),%%a0					\n\t"
 	    "move.l	%%a0,0x24.w					\n\t"
@@ -6677,6 +6691,7 @@ static int decode_native_robn88 (prog_t* prog, info_robn_t* info)
 }
 
 /*****************************************************************************
+ *
  * Copylock Protection System series 2 (1989) by Rob Northen
  * Atari ST specific code
  *
@@ -6727,7 +6742,7 @@ static uint32_t serial_only_robn89;
  * protection in order to catch the serial key value.
  *
  * The static analysis localizes, in the protection code, the instruction
- * which will contain at run-time the serial key value in a register.
+ * of which the register will contain the serial key value at run-time.
  *
  * Dec0de patches the protection code at this location so that the following
  * routine will be called to catch the serial key value.
@@ -6849,7 +6864,7 @@ static void encode_instr32_robn89 (unsigned char* buf,
  * The encrypted protection code is patched at different places in order
  * to replace the original decoded instructions at these locations
  * with new ones.
- * The goal is to modify the behavior of the original protection code
+ * The purpose is to modify the behavior of the original protection code
  * in order to obtain the desired information (serial key value,
  * decrypted program...).
  */
@@ -6880,7 +6895,7 @@ static int decode_native_robn89 (prog_t* prog, info_robn_t* info)
     }
 
     /*
-     * If a serial key is used, patches the protection code, so the
+     * If a serial key is used, patches the protection code, so a
      * subroutine aimed at saving the serial key value will be called
      * (see setup_serial_handler_robn89 for details).
      */
@@ -6937,7 +6952,8 @@ static int decode_native_robn89 (prog_t* prog, info_robn_t* info)
 	/*
 	 * If the wrapped program is a GEMDOS program, patches the
 	 * protection code so the execution of the protection will be
-	 * terminated right after the program has been decrypted.
+	 * terminated right after the program has been decrypted (before
+         * it is relocated).
 	 */
 
 	buf = prog->text + info->reloc_off;
@@ -6954,9 +6970,9 @@ static int decode_native_robn89 (prog_t* prog, info_robn_t* info)
 	/*
 	 * Otherwise, patches the trampoline of the protection code,
 	 * so the protection will be terminated right before the binary
-	 * program should be installed to its final location.
-	 * The registers saved on exit from the protection will provide
-	 * the execution context of the binary program (destination address,
+	 * program is installed to its final location.
+	 * The registers saved on exit from the protection provide the
+	 * execution context of the binary program (destination address,
 	 * program size, zeroes length...).
 	 */
 
